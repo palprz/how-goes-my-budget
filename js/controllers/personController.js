@@ -6,7 +6,7 @@ app.controller( 'personController', function PersonCtrl( $scope ) {
     * @param persoName - name of new person.
     * @param personSalary - salary of new person.
     */
-    $scope.addPerson = function( personName, personSalary) {
+    $scope.addPerson = function( personName, personSalary ) {
         if ( personName === undefined || personSalary === undefined ) {
             return;
         }
@@ -53,22 +53,24 @@ app.controller( 'personController', function PersonCtrl( $scope ) {
     * Generate persons for testing application.
     */
     $scope.generatePersons = function() {
-        var dominikaPerson = {
-            id: 1,
-            name: 'Dominika',
-            salary: 1100
-        }
-        
-        var przemekPerson = {
-            id: 2,
-            name: 'Przemek',
+        var person1 = {
+            id: personId,
+            name: 'Adam',
             salary: 1800
         }
+        personId++;
+        
+        var person2 = {
+            id: personId,
+            name: 'Marie',
+            salary: 1100
+        }
+        personId++;
         
         if ( $scope.persons === undefined ) {
             $scope.persons = [];
         }
-        $scope.persons.push(dominikaPerson);
-        $scope.persons.push(przemekPerson);
+        $scope.persons.push( person1 );
+        $scope.persons.push( person2 );
     }
 } );

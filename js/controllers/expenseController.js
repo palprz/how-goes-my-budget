@@ -1,9 +1,6 @@
 app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
     var expenseId = 1;
     
-    //TODO Change person.name to person.id
-    //TODO generate expenseId with correct way
-    
     /**
     * Add new expense into array with expesnes.
     * @param expenseName - name of new expense.
@@ -22,7 +19,6 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
             forWhom: [],
             isCommon: false
         };
-        
         expenseId++;
         
         if ( $scope.expenses === undefined ) {
@@ -66,13 +62,13 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
         $.each( $scope.expenses, function() {
             if ( this.id === expense.id ) {
                 if ( isChecked ) {
-                    this.forWhom.push( person.name );
-                    if ( compareArrays( this.forWhom, getNameOfPersons() ) ) {
+                    this.forWhom.push( person.id );
+                    if ( compareArrays( this.forWhom, getIdOfPersons() ) ) {
                         this.isCommon = true;
                     }
                 } else {
-                    this.forWhom = expense.forWhom.filter( function(element) {
-                        return element !== person.name; 
+                    this.forWhom = expense.forWhom.filter( function( element ) {
+                        return element !== person.id;
                     } );
                     this.isCommon = false;
                 }
@@ -88,7 +84,7 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
     $scope.getAllExpensesForPerson = function( person ) {
         var returnValue = 0;
         $.each( $scope.expenses, function() {
-            if ( $.inArray( person.name, this.forWhom ) !== -1 ) {
+            if ( $.inArray( person.id, this.forWhom ) !== -1 ) {
                 if ( this.isCommon ) {
                     returnValue += ( this.cost / $scope.persons.length );
                 } else {
@@ -108,7 +104,7 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
     $scope.getCommonExpensesForPerson = function( person ) {
         var returnValue = 0;
         $.each( $scope.expenses, function() {
-            if ( compareArrays( this.forWhom, getNameOfPersons() ) ) {
+            if ( compareArrays( this.forWhom, getIdOfPersons() ) ) {
                 if ( this.isCommon ) {
                     returnValue += ( this.cost / $scope.persons.length );
                 } else {
@@ -128,7 +124,7 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
     $scope.getSeparateExpensesForPerson = function( person ) {
         var returnValue = 0;
         $.each( $scope.expenses, function() {
-            if ( this.forWhom.length === 1 && $.inArray( person.name, this.forWhom ) !== -1 ) {
+            if ( this.forWhom.length === 1 && $.inArray( person.id, this.forWhom ) !== -1 ) {
               returnValue += this.cost;
             }  
         } )
@@ -147,19 +143,21 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
     }
     
     /**
-    * TODO documentation
+    * Check a checked cell after importing data from file.
+    * @param expense - expense to check
+    * @param person - person to check
+    * @return boolean value
     */
     $scope.isCheckedAfterUpload = function( expense, person ) {
-        //TODO please, change this compare arrays ;_;
+        //TODO is there better way with do that?
         var testArr = [];
-        testArr.push( person.name );
+        testArr.push( person.id );
         var isNameInArray = false;
         for ( var i = 0; i < expense.forWhom.length; i++) {
             if ( expense.forWhom[i] == testArr[0] ) {
                 isNameInArray = true;
             }
         }
-        //TODO end of changing
              
         if ( isNameInArray ) {
             return true;
@@ -172,80 +170,85 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
     * Generate expenses for testing application.
     */
     $scope.generateExpenses = function() {
-        var firstExpense = {
-            id: 1,
+        var expense1 = {
+            id: expenseId,
             name: 'Food',
             cost: 300,
-            forWhom: ['Dominika','Przemek'],
+            forWhom: [1, 2],
             isCommon: true
         }
+        expenseId++;
         
-        var secondExpense = {
-            id: 2,
+        var expense2 = {
+            id: expenseId,
             name: 'House',
             cost: 600,
-            forWhom: ['Dominika', 'Przemek'],
+            forWhom: [1, 2],
             isCommon: true
         }
+        expenseId++;
         
-        var thirdExpense = {
-            id: 3,
+        var expense3 = {
+            id: expenseId,
             name: 'Transport',
             cost: 240,
-            forWhom: ['Przemek'],
+            forWhom: [1],
             isCommon: false
         }
+        expenseId++;
         
-        var fourthExpense = {
-            id: 4,
+        var expense4 = {
+            id: expenseId,
             name: 'Phone',
             cost: 40,
-            forWhom: ['Dominika', 'Przemek'],
+            forWhom: [1, 2],
             isCommon: true
         }
+        expenseId++;
         
-        var fifthExpense = {
-            id: 5,
+        var expense5 = {
+            id: expenseId,
             name: 'Gym',
             cost: 50,
-            forWhom: ['Dominika', 'Przemek'],
+            forWhom: [1, 2],
             isCommon: true
         }
+        expenseId++;
         
-        var sixthExpense = {
-            id: 6,
+        var expense6 = {
+            id: expenseId,
             name: 'Pole dance',
             cost: 350,
-            forWhom: ['Dominika'],
+            forWhom: [2],
             isCommon: false
         }
-        
-        expenseId = 7;
+        expenseId++;
         
         if ( $scope.expenses === undefined ) {
             $scope.expenses = [];
         }
-        $scope.expenses.push( firstExpense );
-        $scope.expenses.push( secondExpense );
-        $scope.expenses.push( thirdExpense );
-        $scope.expenses.push( fourthExpense );
-        $scope.expenses.push( fifthExpense );
-        $scope.expenses.push( sixthExpense );
+        
+        $scope.expenses.push( expense1 );
+        $scope.expenses.push( expense2 );
+        $scope.expenses.push( expense3 );
+        $scope.expenses.push( expense4 );
+        $scope.expenses.push( expense5 );
+        $scope.expenses.push( expense6 );
     }
     
     /** UTILS **/
     
     /**
-    * TODO documentation
-    * TODO names of persons? name of persons?
+    * Get ID of persons
+    * @return array with all IDs
     */
-    function getNameOfPersons() {
-        var nameOfPersons = [];
+    function getIdOfPersons() {
+        var idOfPersons = [];
         $.each( $scope.persons, function() {
-          nameOfPersons.push( this.name );  
+          idOfPersons.push( this.id );  
         } )
         
-        return nameOfPersons;
+        return idOfPersons;
     }
     
     /**
