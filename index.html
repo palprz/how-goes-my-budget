@@ -1,0 +1,140 @@
+<html ng-app="mainApp">
+	<head>
+		<title>How goes my budget?</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+		<link rel="stylesheet" href="style/style.css">
+		<script src="resources/jquery-1.12.0.min.js"></script>
+		<script src="resources/angular.min.js"></script>
+        
+		<script src="resources/fusioncharts.js"></script>
+		<script src="resources/angular-fusioncharts.min.js"></script>
+		
+        <script src="js/app.js"></script>
+		<script src="js/controllers/personController.js"></script>
+		<script src="js/controllers/expenseController.js"></script>
+		<script src="js/controllers/chartController.js"></script>
+	</head>
+	<body>
+		<header>
+			<div>
+				Header
+			</div>
+		</header>
+		<main ng-controller="chartController">
+			<div ng-controller="personController">
+                <div ng-controller="expenseController">
+                    <input ng-click="generatePersons()" type="button" value="Generate persons">
+                    <input ng-click="generateExpenses()" type="button" value="Generate expenses">
+                    
+                    <section>
+                        <h2>Add person:</h2>
+                        <form>
+                            <labe>How:</label>
+                            <input type="text" ng-model="person.name" required>
+                            <label>Salary:</label>
+                            <input type="number" ng-model="person.salary" min="1" max="999999" required>
+                            <input ng-click="addPerson( person.name, person.salary )" type="submit" value="Add person">
+                        </form>
+                        <table ng-show="persons !== undefined && persons.length > 0">
+                            <tr>
+                                <th>Delete</th>
+                                <th>Name</th>
+                                <th>Salary</th>
+                            </tr>
+                            <tr ng-repeat="person in persons">
+                                <td><input ng-click="deletePerson( person )" type="button"></td>
+                                <td>{{ person.name }}</td>
+                                <td>{{ person.salary }}&#163;</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>All</td>
+                                <td>{{ allSalaries() }}&#163;</td>
+                            </tr>
+                        </table>
+                    </section>
+                    
+                    <section>
+                        <h2>Add expense:</h2>
+                        <form>
+                            <label>For what:</label>
+                            <input type="text" ng-model="expense.name" required>
+                            <label>How much:</label>
+                            <input type="number" ng-model="expense.cost" min="1" max="999999" required>
+                            <input ng-click="addExpense( expense.name, expense.cost )" type="submit" value="Add expense">
+                        </form>
+                        <table ng-show="expenses !== undefined && expenses.length > 0">
+                            <tr>
+                                <th>Delete</th>
+                                <th>Name</th>
+                                <th>Cost</th>
+                                <th ng-repeat="person in persons">{{ person.name }}</th>
+                            </tr>
+                            <tr ng-repeat="expense in expenses">
+                                <td><input ng-click="deleteExpense( expense )" type="button"></td>
+                                <td> {{ expense.name }}</td>
+                                <td> {{ expense.cost }}&#163;</td>
+                                <td ng-repeat="person in persons">
+                                    <input ng-model="isChecked" ng-click="addExpenseToPerson( expense, person, isChecked )" 
+                                           type="checkbox" ng-checked="isCheckedAfterUpload( expense, person )">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>All</td>
+                                <td>{{ allCosts() }}&#163;</td>
+                            </tr>
+                        </table>
+                    </section>
+                    
+                    <section>
+                        <h2>Expenses(all, common, separate):</h2>
+                        <table ng-show="( persons !== undefined && persons.length > 0 ) 
+                                        && ( expenses !== undefined && expenses.length > 0 )">
+                            <tr>
+                                <th>Person</th>
+                                <th>All expenses <br/>for person</th>
+                                <th>Common expenses <br/>for person</th>
+                                <th>Separate expenses <br/>for person</th>
+                                <th>Summary</th>
+                            </tr>
+                            <tr ng-repeat="person in persons">
+                                <td>{{ person.name }}</td>
+                                <td>{{ getAllExpensesForPerson( person ) }}&#163;</td>
+                                <td>{{ getCommonExpensesForPerson( person ) }}&#163;</td>
+                                <td>{{ getSeparateExpensesForPerson( person ) }}&#163;</td>
+                                <td>{{ getSummary( person, getAllExpensesForPerson( person ) ) }}&#163;</td>
+                            </tr>
+                        </table>
+                    </section>
+                    
+                    <section>
+                        <h2>Chart:</h2>
+                        <fusioncharts 
+                            width="600" 
+                            height="400"
+                            type="pie3d"
+                            datasource="{{ loadDataPie3D( persons, expenses ) }}"
+                        ></fusioncharts>
+                    </section>
+                    
+                    <section>
+                        <h2>TODO list:</h2>
+                        <ul>
+                            <li>TODO:</li>
+                            <li>- add editing details</li>
+                            <li>- change controllers to directives</li>
+                            <li>- popup during close or reload page</li>
+                            <li>- show "Expenses(all, common, separate):" if there is more then 1 person</li>
+                        </ul>
+                    </section>
+                </div>
+			</div>
+		</main>
+		<footer>
+			<div>
+				Made with &#9825; by Przemyslaw Paluch
+			</div>
+		</footer>
+	</body>
+</html>
