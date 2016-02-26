@@ -31,7 +31,7 @@ app.controller( 'chartController', function ChartCtrl( $scope ) {
     * Generate pie chart for 'expenses per person total'.
     * @param dataExpensesPersonTotal - array with details for 'expenses per person (total)'.
     */
-    function generateExpensesPersonTotal( dataExpensesPersonTotal ) {
+    function generateChartExpensesPersonTotal( dataExpensesPersonTotal ) {
         $('#chart-expenses-person-total').insertFusionCharts( {
             type: 'doughnut2d',
             width: '500',
@@ -61,7 +61,7 @@ app.controller( 'chartController', function ChartCtrl( $scope ) {
     * Generate pie chart for 'expenses per person details'.
     * @param dataExpensesPersonDetails - array with details for 'expenses per person (details)'.
     */
-    function generateExpensesPersonDetails( dataExpensesPersonDetails ) {
+    function generateChartExpensesPersonDetails( dataExpensesPersonDetails ) {
         $('#chart-expenses-person-details').insertFusionCharts( {
             type: 'doughnut2d',
             width: '500',
@@ -91,7 +91,7 @@ app.controller( 'chartController', function ChartCtrl( $scope ) {
     * Generate pie chart for 'expenses common'.
     * @param dataExpensesCommon - array with details for 'expenses common' chart.
     */
-    function generateExpensesCommon( dataExpensesCommon ) {
+    function generateChartExpensesCommon( dataExpensesCommon ) {
         $('#chart-expenses-common').insertFusionCharts( {
             type: 'doughnut2d',
             width: '500',
