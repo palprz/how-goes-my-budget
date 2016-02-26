@@ -167,6 +167,72 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
     }
     
     /**
+    * Insert into array and return data needed for create chart for 'Expenses per person (total)'.
+    * @return dataExpensesPersonTotal - array with labels and values
+    */
+    $scope.getDataExpensesPersonTotal = function() {
+        var dataExpensesPersonTotal = [];
+        $.each( $scope.persons, function() {
+            //Add one by one to array
+            dataExpensesPersonTotal.push( { 
+                    label: this.name, 
+                    value: $scope.getAllExpensesForPerson( this )
+                } );
+        } );
+        
+        return dataExpensesPersonTotal;
+    }
+    
+    /**
+    * Insert into array and return data need for create chart for 'Expenses per person (details)'.
+    * @return dataExpensesPersonDetails - array with labels and values
+    */
+    $scope.getDataExpensesPersonDetails = function() {
+        var dataExpensesPersonDetails = [];
+        //Every expense
+        $.each( $scope.expenses, function() {
+            var expense = this;
+            //Check expense for every person connected with it
+            $.each( this.forWhom, function() {
+                var personId = this;
+                var foundPerson;
+                //Find person to get name
+                $.each( $scope.persons, function() {
+                    if ( this.id == personId ) {
+                        foundPerson = this;
+                    }
+                } );
+                //Add into array all details about one expense (who? what? how much?)
+                dataExpensesPersonDetails.push( {
+                        label: foundPerson.name + ", " + expense.name,
+                        value: expense.cost
+                    } );  
+            } );
+            
+        } );
+        
+        return dataExpensesPersonDetails;
+    }
+    
+    /**
+    * Insert into array and return data need for create chart for 'Epxnese common'.
+    * @return dataExpenseCommon - array with labels and values
+    */
+    $scope.getDataExpensesCommon = function() {
+        var dataExpensesCommon = [];
+        $.each( $scope.expenses, function() {
+            if ( this.isCommon ) {
+                dataExpensesCommon.push( {
+                        label: this.name ,
+                        value: this.cost
+                    } );
+            }
+        } );
+        
+        return dataExpensesCommon;
+    }
+    
+    /**
     * Generate expenses for testing application.
     */
     $scope.generateExpenses = function() {

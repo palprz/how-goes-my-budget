@@ -73,4 +73,5 @@ app.controller( 'personController', function PersonCtrl( $scope ) {
         $scope.persons.push( person1 );
         $scope.persons.push( person2 );
     }
+    
 } );
