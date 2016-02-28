@@ -126,9 +126,26 @@
                         <div ng-click="generateCharts( 
                                      getDataExpensesPersonTotal(), 
                                      getDataExpensesPersonDetails(), 
-                                     getDataExpensesCommon() )" 
-                                     type="button" id="button-chart"> 
-                            Create chart
+                                     getDataExpensesCommon(),
+                                     '400', '400' )" 
+                                     type="button" class="button-chart"> 
+                            Create chart (small)
+                        </div>
+                        <div ng-click="generateCharts( 
+                                     getDataExpensesPersonTotal(), 
+                                     getDataExpensesPersonDetails(), 
+                                     getDataExpensesCommon(),
+                                     '550', '550' )" 
+                                     type="button" class="button-chart"> 
+                            Create chart (medium)
+                        </div>
+                        <div ng-click="generateCharts( 
+                                     getDataExpensesPersonTotal(), 
+                                     getDataExpensesPersonDetails(), 
+                                     getDataExpensesCommon(),
+                                     '700', '700' )" 
+                                     type="button" class="button-chart"> 
+                            Create chart (large)
                         </div>
                         <div id="chart-expenses-person-total"></div>
                         <div id="chart-expenses-person-details"></div>
@@ -143,7 +160,6 @@
                             <li><strong>find testers for this project</strong></li>
                             <li>correct sort of expenses per person with details</li>
                             <li>add editing details</li>
-                            <li>add menu for charts (show one of them or show all)</li>
                         </ul>
                     </section>
                 </div>

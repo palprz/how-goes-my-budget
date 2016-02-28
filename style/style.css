@@ -98,17 +98,19 @@ body div {
 #right-site #todo-list {
   clear: both;
 }
-#right-site #chart #button-chart {
+#right-site #chart .button-chart {
   width: 20%;
   height: 2em;
   min-width: 12em;
   line-height: 2em;
   margin: 0 auto;
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
   background-color: #EEE;
   border: 1px solid #000;
   text-align: center;
 }
-#right-site #chart #button-chart:hover {
+#right-site #chart .button-chart:hover {
   background-color: #DDD;
   cursor: pointer;
 }

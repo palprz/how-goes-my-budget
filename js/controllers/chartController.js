@@ -2,11 +2,12 @@ app.controller( 'chartController', function ChartCtrl( $scope ) {
     
     /**
     * Show all charts.
+    * @param sizeY - height of chart
     */
-    function showAllChart() {
-        $( '#chart-expenses-person-total' ).css( 'height', '600', 'important' );
-        $( '#chart-expenses-person-details' ).css( 'height', '600', 'important' );
-        $( '#chart-expenses-common' ).css( 'height', '600', 'important' );        
+    function showAllChart( sizeY ) {
+        $( '#chart-expenses-person-total' ).css( 'height', sizeY, 'important' );
+        $( '#chart-expenses-person-details' ).css( 'height', sizeY, 'important' );
+        $( '#chart-expenses-common' ).css( 'height', sizeY, 'important' );        
     }
     
     /**
@@ -18,22 +19,24 @@ app.controller( 'chartController', function ChartCtrl( $scope ) {
     $scope.generateCharts = function generateCharts( 
                                         dataExpensesPersonTotal, 
                                         dataExpensesPersonDetails, 
-                                        dataExpensesCommon ) {
-        generateChartExpensesPersonTotal( dataExpensesPersonTotal );
-        generateChartExpensesPersonDetails( dataExpensesPersonDetails );
-        generateChartExpensesCommon( dataExpensesCommon );
-        showAllChart();
+                                        dataExpensesCommon, sizeX, sizeY ) {
+        generateChartExpensesPersonTotal( dataExpensesPersonTotal, sizeX, sizeY );
+        generateChartExpensesPersonDetails( dataExpensesPersonDetails, sizeX, sizeY );
+        generateChartExpensesCommon( dataExpensesCommon, sizeX, sizeY );
+        showAllChart( sizeY );
     }
 
     /**
     * Generate pie chart for 'expenses per person total'.
-    * @param dataExpensesPersonTotal - array with details for 'expenses per person (total)'.
+    * @param dataExpensesPersonTotal - array with details for 'expenses per person (total)'
+    * @param sizeX - width of chart
+    * @param sizeY - height of chart
     */
-    function generateChartExpensesPersonTotal( dataExpensesPersonTotal ) {
+    function generateChartExpensesPersonTotal( dataExpensesPersonTotal, sizeX, sizeY ) {
         $( '#chart-expenses-person-total' ).insertFusionCharts( {
             type: 'doughnut2d',
-            width: '700',
-            height: '600',
+            width: sizeX,
+            height: sizeY,
             dataFormat: 'json',
             dataSource: {
                 chart: {
@@ -56,13 +59,15 @@ app.controller( 'chartController', function ChartCtrl( $scope ) {
     
     /**
     * Generate pie chart for 'expenses per person details'.
-    * @param dataExpensesPersonDetails - array with details for 'expenses per person (details)'.
+    * @param dataExpensesPersonDetails - array with details for 'expenses per person (details)'
+    * @param sizeX - width of chart
+    * @param sizeY - height of chart
     */
-    function generateChartExpensesPersonDetails( dataExpensesPersonDetails ) {
+    function generateChartExpensesPersonDetails( dataExpensesPersonDetails, sizeX, sizeY ) {
         $( '#chart-expenses-person-details' ).insertFusionCharts( {
             type: 'doughnut2d',
-            width: '700',
-            height: '600',
+            width: sizeX,
+            height: sizeY,
             dataFormat: 'json',
             dataSource: {
                 chart: {
@@ -85,13 +90,15 @@ app.controller( 'chartController', function ChartCtrl( $scope ) {
     
     /**
     * Generate pie chart for 'expenses common'.
-    * @param dataExpensesCommon - array with details for 'expenses common' chart.
+    * @param dataExpensesCommon - array with details for 'expenses common' chart
+    * @param sizeX - width of chart
+    * @param sizeY - height of chart
     */
-    function generateChartExpensesCommon( dataExpensesCommon ) {
+    function generateChartExpensesCommon( dataExpensesCommon, sizeX, sizeY ) {
         $( '#chart-expenses-common' ).insertFusionCharts( {
             type: 'doughnut2d',
-            width: '700',
-            height: '600',
+            width: sizeX,
+            height: sizeY,
             dataFormat: 'json',
             dataSource: {
                 chart: {
