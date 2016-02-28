@@ -1,15 +1,33 @@
 app.controller( 'chartController', function ChartCtrl( $scope ) {
     
     /**
-    * Hide all chart and show one of them.
+    * Hide all charts and show one of them.
     * @param chartId - ID of HTML tag to show.
     */
     $scope.showChart = function showChart( chartId ) {
-        $('#expenses-person-total').hide();
-        $('#expenses-person-details').hide();
-        $('#expenses-common').hide();
+        $scope.hideCharts();
+        $('#chart-expenses-' + chartId).css('height', '700', 'important');
+    }
+    
+    /**
+    * Hide all charts.
+    */
+    $scope.hideCharts = function hideCharts() {
+        $('#chart-expenses-person-total').css('height', '0', 'important');
+        $('#chart-expenses-person-details').css('height', '0', 'important');
+        $('#chart-expenses-common').css('height', '0', 'important');
+    }
+    
+    /**
+    * Change background color of one of chart list and set default background color for every else.
+    * @param chartId - ID of HTML tag to show
+    */
+    $scope.changeColorChart - function changeColorChart( chartId ) {
+        $('#chart-expenses-person-total').css('background-color', '#EEE');
+        $('#chart-expenses-person-details').css('background-color', '#EEE');
+        $('#chart-expenses-common').css('background-color', '#EEE');
         
-        $('#' + chartId).show();   
+        $('#chart-expenses-' + chartId).css('background-color','#DDD');
     }
     
     /**
@@ -25,6 +43,7 @@ app.controller( 'chartController', function ChartCtrl( $scope ) {
         generateChartExpensesPersonTotal( dataExpensesPersonTotal );
         generateChartExpensesPersonDetails( dataExpensesPersonDetails );
         generateChartExpensesCommon( dataExpensesCommon );
+        $scope.showChart( 'person-total' );
     }
 
     /**
@@ -34,13 +53,12 @@ app.controller( 'chartController', function ChartCtrl( $scope ) {
     function generateChartExpensesPersonTotal( dataExpensesPersonTotal ) {
         $('#chart-expenses-person-total').insertFusionCharts( {
             type: 'doughnut2d',
-            width: '500',
-            height: '400',
+            width: '700',
+            height: '700',
             dataFormat: 'json',
             dataSource: {
                 chart: {
-                    caption: 'Expenses per person',
-                    subcaption: 'total',
+                    caption: 'Expenses per person (total)',
                     enablemultislicing: '0',
                     slicingdistance: '15',
                     showpercentvalues: '1',
@@ -64,13 +82,12 @@ app.controller( 'chartController', function ChartCtrl( $scope ) {
     function generateChartExpensesPersonDetails( dataExpensesPersonDetails ) {
         $('#chart-expenses-person-details').insertFusionCharts( {
             type: 'doughnut2d',
-            width: '500',
-            height: '400',
+            width: '700',
+            height: '700',
             dataFormat: 'json',
             dataSource: {
                 chart: {
-                    caption: 'Expenses per person',
-                    subcaption: 'details',
+                    caption: 'Expenses per person (details)',
                     enablemultislicing: '0',
                     slicingdistance: '15',
                     showpercentvalues: '1',
@@ -94,8 +111,8 @@ app.controller( 'chartController', function ChartCtrl( $scope ) {
     function generateChartExpensesCommon( dataExpensesCommon ) {
         $('#chart-expenses-common').insertFusionCharts( {
             type: 'doughnut2d',
-            width: '500',
-            height: '400',
+            width: '700',
+            height: '700',
             dataFormat: 'json',
             dataSource: {
                 chart: {

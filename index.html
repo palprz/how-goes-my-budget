@@ -17,132 +17,147 @@
 		<script src="js/controllers/chartController.js"></script>
 	</head>
 	<body>
-		<header>
-			<div>
-				Header
-			</div>
-		</header>
-		<main ng-controller="personController">
+        <div ng-controller="personController">
             <div ng-controller="expenseController">
-                <input ng-click="generatePersons()" type="button" value="Generate persons">
-                <input ng-click="generateExpenses()" type="button" value="Generate expenses">
-                <section>
-                    <h2>Add person:</h2>
-                    <form>
-                        <labe>How:</label>
-                        <input type="text" ng-model="person.name" required>
-                        <label>Salary:</label>
-                        <input type="number" ng-model="person.salary" min="1" max="999999" required>
-                        <input ng-click="addPerson( person.name, person.salary )" type="submit" value="Add person">
-                    </form>
-                    <table ng-show="persons !== undefined && persons.length > 0">
-                        <tr>
-                            <th>Delete</th>
-                            <th>Name</th>
-                            <th>Salary</th>
-                        </tr>
-                        <tr ng-repeat="person in persons">
-                            <td><input ng-click="deletePerson( person )" type="button"></td>
-                            <td>{{ person.name }}</td>
-                            <td>{{ person.salary }}&#163;</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>All</td>
-                            <td>{{ allSalaries() }}&#163;</td>
-                        </tr>
-                    </table>
-                </section>
-
-                <section>
-                    <h2>Add expense:</h2>
-                    <form>
-                        <label>For what:</label>
-                        <input type="text" ng-model="expense.name" required>
-                        <label>How much:</label>
-                        <input type="number" ng-model="expense.cost" min="1" max="999999" required>
-                        <input ng-click="addExpense( expense.name, expense.cost )" type="submit" value="Add expense">
-                    </form>
-                    <table ng-show="expenses !== undefined && expenses.length > 0">
-                        <tr>
-                            <th>Delete</th>
-                            <th>Name</th>
-                            <th>Cost</th>
-                            <th ng-repeat="person in persons">{{ person.name }}</th>
-                        </tr>
-                        <tr ng-repeat="expense in expenses">
-                            <td><input ng-click="deleteExpense( expense )" type="button"></td>
-                            <td> {{ expense.name }}</td>
-                            <td> {{ expense.cost }}&#163;</td>
-                            <td ng-repeat="person in persons">
-                                <input ng-model="isChecked" ng-click="addExpenseToPerson( expense, person, isChecked )" 
-                                       type="checkbox" ng-checked="isCheckedAfterUpload( expense, person )">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>All</td>
-                            <td>{{ allCosts() }}&#163;</td>
-                        </tr>
-                    </table>
-                </section>
-
-                <section>
-                    <h2>Expenses(all, common, separate):</h2>
-                    <table ng-show="( persons !== undefined && persons.length > 0 ) 
-                                    && ( expenses !== undefined && expenses.length > 0 )">
-                        <tr>
-                            <th>Person</th>
-                            <th>All expenses <br/>for person</th>
-                            <th>Common expenses <br/>for person</th>
-                            <th>Separate expenses <br/>for person</th>
-                            <th>Summary</th>
-                        </tr>
-                        <tr ng-repeat="person in persons">
-                            <td>{{ person.name }}</td>
-                            <td>{{ getAllExpensesForPerson( person ) }}&#163;</td>
-                            <td>{{ getCommonExpensesForPerson( person ) }}&#163;</td>
-                            <td>{{ getSeparateExpensesForPerson( person ) }}&#163;</td>
-                            <td>{{ getSummary( person, getAllExpensesForPerson( person ) ) }}&#163;</td>
-                        </tr>
-                    </table>
-                </section>
-
-                <section ng-controller="chartController">
-                    <h2>Chart:</h2>
-                    <input ng-show="( persons !== undefined && persons.length > 0 ) 
-                                    && ( expenses !== undefined && expenses.length > 0 )" 
-                           ng-click="generateCharts( 
-                                     getDataExpensesPersonTotal(), 
-                                     getDataExpensesPersonDetails(), 
-                                     getDataExpensesCommon() )" 
-                           type="button" id="button-chart" value="Create chart"></input>
-                    <ul id="charts">
-                        <li ng-click="showChart( 'expenses-person-total' )" style="width: 200px; height: 30px; background-color: grey; border: 1px solid red" id="expenses-person-total">Expenses per person (total)</li>
-                        <li id="chart-expenses-person-total"></li>
-                        <li ng-click="showChart( 'expenses-person-details' )" style="width: 200px; height: 30px; background-color: grey; border: 1px solid red" id="expenses-person-details">Expenses per person (details) </li>
-                        <li id="chart-expenses-person-details"></li>
-                        <li ng-click="showChart( 'expenses-common' )" style="width: 200px; height: 30px; background-color: grey; border: 1px solid red" id="expenses-common">Expenses common</li>
-                        <li id="chart-expenses-common"></li>
-                    </ul>
-                </section>
-
-                <section>
-                    <ul>
-                        <li>TODO:</li>
-                        <li>- correct sort of expenses per person with detailss</li>
-                        <li>- import/export json</li>
-                        <li>- after all (logic) delete all style="" and create with 'normal' way LESS for project</li>
-                        <li>- validation fields</li>
-                        <li>- add editing details</li>
-                    </ul>
-                </section>
+                <div id="left-site">
+                    <div id="above-footer">
+                        <header>
+                            <h2>How goes my budget?</h2>
+                        </header>
+                        <section id="generate-test-datas">
+                            <h3>Generate test data</h3>
+                            <input ng-click="generatePersons()" type="button" value="Generate persons">
+                            <input ng-click="generateExpenses()" type="button" value="Generate expenses">
+                        </section>
+                        <section id="add-person">
+                            <h3>Add person</h3>
+                            <form>
+                                <input type="text" ng-model="person.name" placeholder="Who?" required>
+                                <input type="number" ng-model="person.salary" min="1" max="999999" placeholder="Salary" required>
+                                <input ng-click="addPerson( person.name, person.salary )" type="submit" value="Add person">
+                            </form>
+                        </section>
+                        <section id="add-expense">
+                            <h3>Add expense</h3>
+                            <form>
+                                <input type="text" ng-model="expense.name" placeholder="For what?" required>
+                                <input type="number" ng-model="expense.cost" min="1" max="999999" placeholder="How much?" required>
+                                <input ng-click="addExpense( expense.name, expense.cost )" type="submit" value="Add expense">
+                            </form>
+                        </section>
+                    </div>
+                    <footer>
+                        <h3>Made with &#9825; <br/>by Przemyslaw Paluch</h3>
+                    </footer>
+                </div>
+                <div id="right-site">
+                    <section id="persons-table" ng-show="persons !== undefined && persons.length > 0">
+                        <h3>Table with persons</h3>
+                        <table>
+                            <tr>
+                                <th>Delete</th>
+                                <th>Name</th>
+                                <th>Salary</th>
+                            </tr>
+                            <tr ng-repeat="person in persons">
+                                <td class="special-cell"><div ng-click="deletePerson( person )">X</div></td>
+                                <td>{{ person.name }}</td>
+                                <td>{{ person.salary }}&#163;</td>
+                            </tr>
+                            <tr class="special-row">
+                                <td class="special-cell"></td>
+                                <td class="special-cell">All</td>
+                                <td class="special-cell">{{ allSalaries() }}&#163;</td>
+                            </tr>
+                        </table>
+                    </section>
+                    <section id="expenses-table" ng-show="expenses !== undefined && expenses.length > 0">
+                        <h3>Table with expenses</h3>
+                        <table>
+                            <tr>
+                                <th>Delete</th>
+                                <th>Name</th>
+                                <th>Cost</th>
+                                <th ng-repeat="person in persons">{{ person.name }}</th>
+                            </tr>
+                            <tr ng-repeat="expense in expenses">
+                                <td class="special-cell"><div ng-click="deleteExpense( expense )">X</div></td>
+                                <td> {{ expense.name }}</td>
+                                <td> {{ expense.cost }}&#163;</td>
+                                <td ng-repeat="person in persons">
+                                    <input ng-model="isChecked" ng-click="addExpenseToPerson( expense, person, isChecked )" 
+                                           type="checkbox" ng-checked="isCheckedAfterUpload( expense, person )">
+                                </td>
+                            </tr>
+                            <tr class="special-row">
+                                <td class="special-cell"></td>
+                                <td class="special-cell">All</td>
+                                <td class="special-cell">{{ allCosts() }}&#163;</td>
+                            </tr>
+                        </table>
+                    </section>
+                    <section id="expenses-summary-table"
+                             ng-show="( persons !== undefined && persons.length > 0 ) 
+                                        && ( expenses !== undefined && expenses.length > 0 )">
+                        <h3>Summary expenses</h3>
+                        <table>
+                            <tr>
+                                <th>Person</th>
+                                <th>All</th>
+                                <th>Common</th>
+                                <th>Separate</th>
+                                <th>Summary (salary minus expenses)</th>
+                            </tr>
+                            <tr ng-repeat="person in persons">
+                                <td>{{ person.name }}</td>
+                                <td>{{ getAllExpensesForPerson( person ) }}&#163;</td>
+                                <td>{{ getCommonExpensesForPerson( person ) }}&#163;</td>
+                                <td>{{ getSeparateExpensesForPerson( person ) }}&#163;</td>
+                                <td ng-class="getSummary( person, getAllExpensesForPerson( person ) ) > 0 ? 'positive' : 'negative'">
+                                    {{ getSummary( person, getAllExpensesForPerson( person ) ) }}&#163;
+                                </td>
+                            </tr>
+                        </table>
+                    </section>
+                    <section id="chart"
+                             ng-controller="chartController" 
+                             ng-show="( persons !== undefined && persons.length > 0 ) 
+                                        && ( expenses !== undefined && expenses.length > 0 )">
+                        <ul>
+                            <li ng-click="generateCharts( 
+                                         getDataExpensesPersonTotal(), 
+                                         getDataExpensesPersonDetails(), 
+                                         getDataExpensesCommon() )" 
+                                         type="button" id="button-chart" value=""
+                                         id="expenses-person-total"> 
+                                    Create chart
+                            </li>
+                            <li ng-click="showChart( 'person-total' )" id="expenses-person-total">Expenses per person (total)</li>
+                            <li ng-click="showChart( 'person-details' )" id="expenses-person-details">Expenses per person (details) </li>
+                            <li ng-click="showChart( 'common' )" id="expenses-common">Expenses common</li>
+                        </ul>
+                        <div ng-click="changeColorChart( 'person-total' )" id="chart-expenses-person-total"></div>
+                        <div ng-click="changeColorChart( 'person-details' )" id="chart-expenses-person-details"></div>
+                        <div ng-click="changeColorChart( 'common' )" id="chart-expenses-common"></div>
+                    </section>
+                    <section id="todo-list">
+                        <h3>TODO list for the future:</h3>
+                        <ul>
+                            <li>- add different class for every second row in tables</li>
+                            <li>- try to add label into table</li>
+                            <li>- add change color to summary (+/-)</li>
+                            <li>- check all documentation</li>
+                            <li>- correct sort of expenses per person with details</li>
+                            <li>- import/export json</li>
+                            <li>- add editing details</li>
+                            <li>- fix problem with showing two charts at one time</li>
+                            <li>- create better version for smaller resolutions</li>
+                            <li>- strange problem with compile less</li>
+                            <li>- set the same height for every table on right site</li>
+                        </ul>
+                    </section>
+                </div>
             </div>
-		</main>
-		<footer>
-			<div>
-				Made with &#9825; by Przemyslaw Paluch
-			</div>
-		</footer>
+        </div>
 	</body>
 </html>
