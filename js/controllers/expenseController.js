@@ -12,7 +12,7 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
     $scope.addExpense = function( expenseName, expenseCost) {
         if ( expenseName === undefined || expenseCost === undefined ) {
             return;
-        }
+        };
 
         var newExpense = {
             id: expenseId,
@@ -25,7 +25,7 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
         
         if ( $scope.expenses === undefined ) {
             $scope.expenses = [];
-        }
+        };
         $scope.expenses.push( newExpense );
         
         //TODO work in progress with this function
@@ -37,9 +37,9 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
     */
     function checkAndSetEqualHeight() {
         //TODO add rest of function
-        var heightPersons = $('#persons-table table').height();
-        var heightExpenses = $('#expenses-table table').height();
-        var heightSummary = $('#expenses-summary-table table').height();
+        var heightPersons = $( '#persons-table table' ).height();
+        var heightExpenses = $( '#expenses-table table' ).height();
+        var heightSummary = $( '#expenses-summary-table table ').height();
         console.log( heightPersons, heightExpenses, heightSummary );
     }
     
@@ -60,7 +60,7 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
             var value = 0;
             for( var i = 0; i < $scope.expenses.length; i++ ) {
                 value+= $scope.expenses[i].cost;
-            }
+            };
             
             return value;            
         } else {
@@ -81,15 +81,15 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
                     this.forWhom.push( person.id );
                     if ( compareArrays( this.forWhom, getIdOfPersons() ) ) {
                         this.isCommon = true;
-                    }
+                    };
                 } else {
                     this.forWhom = expense.forWhom.filter( function( element ) {
                         return element !== person.id;
                     } );
                     this.isCommon = false;
-                }
-            }
-        } )
+                };
+            };
+        } );
     }
     
     /**
@@ -105,9 +105,9 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
                     returnValue += ( this.cost / $scope.persons.length );
                 } else {
                     returnValue += this.cost;
-                }
-            }
-        } )
+                };
+            };
+        } );
         
         return returnValue;
     }
@@ -125,9 +125,9 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
                     returnValue += ( this.cost / $scope.persons.length );
                 } else {
                     returnValue += this.cost;                    
-                }
-            }
-        } )
+                };
+            };
+        } );
         
         return returnValue;
     }
@@ -142,8 +142,8 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
         $.each( $scope.expenses, function() {
             if ( this.forWhom.length === 1 && $.inArray( person.id, this.forWhom ) !== -1 ) {
               returnValue += this.cost;
-            }  
-        } )
+            };
+        } );
         
         return returnValue;
     }
@@ -158,7 +158,7 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
         var summary = person.salary - allExpensesForPerson;
         if ( summary > 0 ) {
             summary = '+' + summary;
-        }
+        };
         //TODO delete below line
 //        checkSummary();
         
@@ -189,14 +189,10 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
         for ( var i = 0; i < expense.forWhom.length; i++) {
             if ( expense.forWhom[i] == arr[0] ) {
                 isNameInArray = true;
-            }
-        }
-             
-        if ( isNameInArray ) {
-            return true;
-        } else {
-            return false;
-        }
+            };
+        };
+        
+        return isNameInArray;
     }
     
     /**
@@ -233,7 +229,7 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
                 $.each( $scope.persons, function() {
                     if ( this.id == personId ) {
                         foundPerson = this;
-                    }
+                    };
                 } );
                 //Add into array all details about one expense (who? what? how much?)
                 dataExpensesPersonDetails.push( {
@@ -241,7 +237,6 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
                         value: expense.cost
                     } );
             } );
-            
         } );
                 
         return dataExpensesPersonDetails;
@@ -259,7 +254,7 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
                         label: this.name ,
                         value: this.cost
                     } );
-            }
+            };
         } );
         
         return dataExpensesCommon;
@@ -275,7 +270,7 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
             cost: 300,
             forWhom: [1, 2],
             isCommon: true
-        }
+        };
         expenseId++;
         
         var expense2 = {
@@ -284,7 +279,7 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
             cost: 600,
             forWhom: [1, 2],
             isCommon: true
-        }
+        };
         expenseId++;
         
         var expense3 = {
@@ -293,7 +288,7 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
             cost: 240,
             forWhom: [1],
             isCommon: false
-        }
+        };
         expenseId++;
         
         var expense4 = {
@@ -302,7 +297,7 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
             cost: 40,
             forWhom: [1, 2],
             isCommon: true
-        }
+        };
         expenseId++;
         
         var expense5 = {
@@ -311,7 +306,7 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
             cost: 50,
             forWhom: [1, 2],
             isCommon: true
-        }
+        };
         expenseId++;
         
         var expense6 = {
@@ -320,12 +315,12 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
             cost: 350,
             forWhom: [2],
             isCommon: false
-        }
+        };
         expenseId++;
         
         if ( $scope.expenses === undefined ) {
             $scope.expenses = [];
-        }
+        };
         
         $scope.expenses.push( expense1 );
         $scope.expenses.push( expense2 );
@@ -345,7 +340,7 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
         var idOfPersons = [];
         $.each( $scope.persons, function() {
           idOfPersons.push( this.id );  
-        } )
+        } );
         
         return idOfPersons;
     }

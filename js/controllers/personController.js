@@ -9,7 +9,7 @@ app.controller( 'personController', function PersonCtrl( $scope ) {
     $scope.addPerson = function( personName, personSalary ) {
         if ( personName === undefined || personSalary === undefined ) {
             return;
-        }
+        };
         
         var newPerson = {
             id: personId,
@@ -20,7 +20,7 @@ app.controller( 'personController', function PersonCtrl( $scope ) {
         
         if ( $scope.persons === undefined ) {
             $scope.persons = [];
-        }
+        };
         $scope.persons.push( newPerson );
     }
     
@@ -41,12 +41,12 @@ app.controller( 'personController', function PersonCtrl( $scope ) {
             var value = 0;
             for( var i = 0; i < $scope.persons.length; i++ ) {
                 value+= $scope.persons[i].salary;
-            }
+            };
             
             return value;            
         } else {
             return 0;
-        }
+        };
     }
       
     /**
@@ -57,19 +57,19 @@ app.controller( 'personController', function PersonCtrl( $scope ) {
             id: personId,
             name: 'Adam',
             salary: 1800
-        }
+        };
         personId++;
         
         var person2 = {
             id: personId,
             name: 'Marie',
             salary: 1100
-        }
+        };
         personId++;
         
         if ( $scope.persons === undefined ) {
             $scope.persons = [];
-        }
+        };
         $scope.persons.push( person1 );
         $scope.persons.push( person2 );
     }
