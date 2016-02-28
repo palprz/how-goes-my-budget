@@ -100,7 +100,7 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
             };
         } );
         
-        return returnValue;
+        return Math.round( returnValue ).toFixed(2);
     }
     
     /**
@@ -120,7 +120,7 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
             };
         } );
         
-        return returnValue;
+        return Math.round( returnValue ).toFixed(2);
     }
     
     /**
@@ -136,7 +136,7 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
             };
         } );
         
-        return returnValue;
+        return Math.round( returnValue ).toFixed(2);
     }
     
     /**
@@ -146,12 +146,12 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
     * @return summary
     */
     $scope.getSummary = function( person, allExpensesForPerson ) {
-        var summary = person.salary - allExpensesForPerson;
-        if ( summary > 0 ) {
-            summary = '+' + summary;
+        var returnValue = person.salary - allExpensesForPerson;
+        if ( returnValue > 0 ) {
+            returnValue = '+' + returnValue;
         };
         
-        return summary;
+        return Math.round( returnValue ).toFixed(2);
     }
     
     /**
