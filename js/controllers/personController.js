@@ -29,7 +29,14 @@ app.controller( 'personController', function PersonCtrl( $scope ) {
     * @param person - person to remove.
     */
     $scope.deletePerson = function( person ) {
-        $scope.persons.splice( person, 1 );
+        var indexToRemove = 0;
+        $.each( $scope.persons, function( index ) {
+            if ( this.id == person.id ) {
+                indexToRemove = index;
+            };
+        } );
+        
+        $scope.persons.splice( indexToRemove, 1 );
     }
     
     /**

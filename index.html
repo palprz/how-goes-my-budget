@@ -59,7 +59,7 @@
                                 <th>Name</th>
                                 <th>Salary</th>
                             </tr>
-                            <tr ng-repeat="person in persons">
+                            <tr ng-repeat="person in persons" ng-class="($index % 2 == 0 ? 'even' : 'odd')">
                                 <td class="special-cell"><div ng-click="deletePerson( person )">X</div></td>
                                 <td>{{ person.name }}</td>
                                 <td>{{ person.salary }}&#163;</td>
@@ -80,7 +80,7 @@
                                 <th>Cost</th>
                                 <th ng-repeat="person in persons">{{ person.name }}</th>
                             </tr>
-                            <tr ng-repeat="expense in expenses">
+                            <tr ng-repeat="expense in expenses" ng-class="($index % 2 == 0 ? 'even' : 'odd')">
                                 <td class="special-cell"><div ng-click="deleteExpense( expense )">X</div></td>
                                 <td> {{ expense.name }}</td>
                                 <td> {{ expense.cost }}&#163;</td>
@@ -108,7 +108,7 @@
                                 <th>Separate</th>
                                 <th>Summary (salary minus expenses)</th>
                             </tr>
-                            <tr ng-repeat="person in persons">
+                            <tr ng-repeat="person in persons" ng-class="($index % 2 == 0 ? 'even' : 'odd')">
                                 <td>{{ person.name }}</td>
                                 <td>{{ getAllExpensesForPerson( person ) }}&#163;</td>
                                 <td>{{ getCommonExpensesForPerson( person ) }}&#163;</td>
@@ -123,40 +123,31 @@
                              ng-controller="chartController" 
                              ng-show="( persons !== undefined && persons.length > 0 ) 
                                         && ( expenses !== undefined && expenses.length > 0 )">
-                        <ul>
-                            <li ng-click="generateCharts( 
-                                         getDataExpensesPersonTotal(), 
-                                         getDataExpensesPersonDetails(), 
-                                         getDataExpensesCommon() )" 
-                                         type="button" id="button-chart"> 
-                                    Create chart
-                            </li>
-                            <li ng-click="showChart( 'person-total' )" id="expenses-person-total">Expenses per person (total)</li>
-                            <li ng-click="showChart( 'person-details' )" id="expenses-person-details">Expenses per person (details) </li>
-                            <li ng-click="showChart( 'common' )" id="expenses-common">Expenses common</li>
-                        </ul>
-                        <div ng-click="changeColorChart( 'person-total' )" id="chart-expenses-person-total"></div>
-                        <div ng-click="changeColorChart( 'person-details' )" id="chart-expenses-person-details"></div>
-                        <div ng-click="changeColorChart( 'common' )" id="chart-expenses-common"></div>
+                        <div ng-click="generateCharts( 
+                                     getDataExpensesPersonTotal(), 
+                                     getDataExpensesPersonDetails(), 
+                                     getDataExpensesCommon() )" 
+                                     type="button" id="button-chart"> 
+                            Create chart
+                        </div>
+                        <div id="chart-expenses-person-total"></div>
+                        <div id="chart-expenses-person-details"></div>
+                        <div id="chart-expenses-common"></div>
                     </section>
                     <section id="todo-list">
-                        <h3>TODO list for the future:</h3>
+                        <h3>TODO list:</h3>
                         <ul>
-                            <li>- add different class for every second row in tables</li>
-                            <li>- try to add label into table</li>
-                            <li>- add change color to summary (+/-)</li>
-                            <li>- check all documentation</li>
-                            <li>- correct sort of expenses per person with details</li>
-                            <li>- import/export json</li>
-                            <li>- add editing details</li>
-                            <li>- fix problem with showing two charts at one time</li>
-                            <li>- create better version for smaller resolutions</li>
-                            <li>- strange problem with compile less</li>
-                            <li>- set the same height for every table on right site</li>
+                            <li>import/export json</li>
+                            <li>test all stuff once again (every functionality)!</li>
+                            <li>check all documentation</li>
+                            <li><strong>find testers for this project</strong></li>
+                            <li>correct sort of expenses per person with details</li>
+                            <li>add editing details</li>
+                            <li>add menu for charts (show one of them or show all)</li>
                         </ul>
                     </section>
                 </div>
             </div>
         </div>
 	</body>
-</html>
+</html>+

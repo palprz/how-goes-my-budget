@@ -1,8 +1,6 @@
 app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
     var expenseId = 1;
     
-    //TODO add everywhere semicolon ';' on end of line (just in case)
-    
     /**
     * Add new expense into array with expesnes.
     * @param expenseName - name of new expense.
@@ -27,20 +25,6 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
             $scope.expenses = [];
         };
         $scope.expenses.push( newExpense );
-        
-        //TODO work in progress with this function
-        checkAndSetEqualHeight();
-    }
-    
-    /**
-    * TODO documentation
-    */
-    function checkAndSetEqualHeight() {
-        //TODO add rest of function
-        var heightPersons = $( '#persons-table table' ).height();
-        var heightExpenses = $( '#expenses-table table' ).height();
-        var heightSummary = $( '#expenses-summary-table table ').height();
-        console.log( heightPersons, heightExpenses, heightSummary );
     }
     
     /**
@@ -48,7 +32,14 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
     * @param expense - expense to remove.
     */
     $scope.deleteExpense = function( expense ) {
-        $scope.expenses.splice( expense, 1 );
+        var indexToRemove = 0;
+        $.each( $scope.expenses, function( index ) {
+            if ( this.id == expense.id ) {
+                indexToRemove = index;
+            };
+        } );
+        
+        $scope.expenses.splice( indexToRemove, 1 );
     }
     
     /**
@@ -159,21 +150,9 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
         if ( summary > 0 ) {
             summary = '+' + summary;
         };
-        //TODO delete below line
-//        checkSummary();
         
         return summary;
     }
-    
-    /**
-    * TODO documentation
-    */
-//    function checkSummary() {
-//        var listOfSummary = $('.summary');
-//        $.each( listOfSummary, function() {
-//            console.log(this);
-//        });
-//    }
     
     /**
     * Check a checked cell after importing data from file.
