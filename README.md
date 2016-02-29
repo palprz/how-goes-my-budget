@@ -38,6 +38,11 @@ Charts:
 1. Download project
 2. Open `index.html` and that's it!
 
+## List of functionalities to add in the future:
+- add cookies
+- add editing rows in tables
+- add sort with different ways data in charts
+
 ## Screens from running application
 1) Homepage after open page<br />
 ![alt text][homepage_img]
