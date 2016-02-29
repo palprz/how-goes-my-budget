@@ -39,4 +39,31 @@ Charts:
 2. Open `index.html` and that's it!
 
 ## Screens from running application
-TODO
+1) Homepage after open page<br />
+![alt text][homepage_img]
+
+2) Adding new person and table with persons<br />
+![alt text][add_person_img]
+
+3) Adding new expense and table with expenses<br />
+![alt text][add_expense_img]
+
+4) Test data<br />
+![alt text][test_data_img]
+
+5) First chart<br />
+![alt text][first_chart_img]
+
+6) Second chart<br />
+![alt text][second_chart_img]
+
+7) Third chart<br />
+![alt text][third_chart_img]
+
+[homepage_img]: https://github.com/palprz/how-goes-my-budget/blob/master/markdown_img_homepage.png
+[add_person_img]: https://github.com/palprz/how-goes-my-budget/blob/master/markdown_img_add_person.png
+[add_expense_img]: https://github.com/palprz/how-goes-my-budget/blob/master/markdown_img_add_expense.png
+[test_data_img]: https://github.com/palprz/how-goes-my-budget/blob/master/markdown_img_test_data.png
+[first_chart_img]: https://github.com/palprz/how-goes-my-budget/blob/master/markdown_img_first_chart.png
+[second_chart_img]: https://github.com/palprz/how-goes-my-budget/blob/master/markdown_img_second_chart.png
+[third_chart_img]:https://github.com/palprz/how-goes-my-budget/blob/master/markdown_img_third_chart.png
