@@ -15,6 +15,8 @@ app.controller( 'chartController', function ChartCtrl( $scope ) {
     * @param dataExpensesPersonTotal - array with details for 'expenses per person (total)'.
     * @param dataExpensesPersonDetails - array with details for 'expenses per person (details)'.
     * @param dataExpensesCommon - array with details for 'expenses common' chart.
+    * @param sizeX - width of chart
+    * @param sizeY - height of chart
     */
     $scope.generateCharts = function generateCharts( 
                                         dataExpensesPersonTotal, 

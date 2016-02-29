@@ -62,12 +62,12 @@
                             <tr ng-repeat="person in persons" ng-class="($index % 2 == 0 ? 'even' : 'odd')">
                                 <td class="special-cell"><div ng-click="deletePerson( person )">X</div></td>
                                 <td>{{ person.name }}</td>
-                                <td>{{ person.salary }}&#163;</td>
+                                <td>&#163;{{ person.salary }}</td>
                             </tr>
                             <tr class="special-row">
                                 <td class="special-cell"></td>
                                 <td class="special-cell">All</td>
-                                <td class="special-cell">{{ allSalaries() }}&#163;</td>
+                                <td class="special-cell">&#163;{{ allSalaries() }}</td>
                             </tr>
                         </table>
                     </section>
@@ -82,8 +82,8 @@
                             </tr>
                             <tr ng-repeat="expense in expenses" ng-class="($index % 2 == 0 ? 'even' : 'odd')">
                                 <td class="special-cell"><div ng-click="deleteExpense( expense )">X</div></td>
-                                <td> {{ expense.name }}</td>
-                                <td> {{ expense.cost }}&#163;</td>
+                                <td>{{ expense.name }}</td>
+                                <td>&#163;{{ expense.cost }}</td>
                                 <td ng-repeat="person in persons">
                                     <input ng-model="isChecked" ng-click="addExpenseToPerson( expense, person, isChecked )" 
                                            type="checkbox" ng-checked="isCheckedAfterUpload( expense, person )">
@@ -92,7 +92,7 @@
                             <tr class="special-row">
                                 <td class="special-cell"></td>
                                 <td class="special-cell">All</td>
-                                <td class="special-cell">{{ allCosts() }}&#163;</td>
+                                <td class="special-cell">&#163;{{ allCosts() }}</td>
                             </tr>
                         </table>
                     </section>
@@ -110,11 +110,11 @@
                             </tr>
                             <tr ng-repeat="person in persons" ng-class="($index % 2 == 0 ? 'even' : 'odd')">
                                 <td>{{ person.name }}</td>
-                                <td>{{ getAllExpensesForPerson( person ) }}&#163;</td>
-                                <td>{{ getCommonExpensesForPerson( person ) }}&#163;</td>
-                                <td>{{ getSeparateExpensesForPerson( person ) }}&#163;</td>
+                                <td>&#163;{{ getAllExpensesForPerson( person ) }}</td>
+                                <td>&#163;{{ getCommonExpensesForPerson( person ) }}</td>
+                                <td>&#163;{{ getSeparateExpensesForPerson( person ) }}</td>
                                 <td ng-class="getSummary( person, getAllExpensesForPerson( person ) ) > 0 ? 'positive' : 'negative'">
-                                    {{ getSummary( person, getAllExpensesForPerson( person ) ) }}&#163;
+                                    &#163;{{ getSummary( person, getAllExpensesForPerson( person ) ) }}
                                 </td>
                             </tr>
                         </table>
@@ -154,12 +154,9 @@
                     <section id="todo-list">
                         <h3>TODO list:</h3>
                         <ul>
-                            <li>import/export json</li>
-                            <li>test all stuff once again (every functionality)!</li>
-                            <li>check all documentation</li>
-                            <li><strong>find testers for this project</strong></li>
-                            <li>correct sort of expenses per person with details</li>
+                            <li>add cookies</li>
                             <li>add editing details</li>
+                            <li>add sort of expenses per person with details</li>
                         </ul>
                     </section>
                 </div>

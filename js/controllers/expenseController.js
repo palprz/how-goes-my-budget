@@ -124,7 +124,7 @@ app.controller( 'expenseController', function ExpenseCtrl( $scope ) {
     }
     
     /**
-    * Return all separate expesnes for person.
+    * Return all separate expenses for person.
     * @param person - person which is using to get all separate expesnes.
     * @return value of all separate expenses.
     */
