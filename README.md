@@ -8,7 +8,7 @@ Web application for creating simple plan of budget (e.g. for family).
   - jQuery ver. 1.12.0
   - FusionCharts ver. 3.10.1
   - LESS(CSS3)
-  - HTMLS5
+  - HTML5
 
 ## Functionalities:
 User can:
