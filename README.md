@@ -36,7 +36,8 @@ Charts:
 
 ## Steps for run the application:
 1. Download project
-2. Open `index.html` and that's it!
+2. Start your local server (e.g. with using nodejs).
+3. Put downloaded project into correct directory for local server and open index.html page on browser.
 
 ## List of functionalities to add in the future:
 - add cookies
