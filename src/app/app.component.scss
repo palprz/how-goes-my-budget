@@ -1,0 +1,54 @@
+// TODO use in proper way SCSS
+
+#left-side {
+    header, footer {
+        clear: left;
+        float: left;
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        background-color: #ddd;
+    }
+    header {
+        font-size: 24px;
+    }
+    float: left;
+    width: 30%;
+    #person-form {
+        height: 100px;
+    }
+    #expense-form {
+        height: 100px;
+    }
+    form {
+        margin: 10px 0;
+    }
+    input {
+        clear: left;
+        float: left;
+        margin: 10px;
+    }
+    footer {
+        // TODO
+    }
+}
+
+#right-side {
+    float: right;
+    width: 65%;
+    #results, #charts {
+        width: 100%;
+        height: 350px;
+        background-color: #eee;
+        margin: 10px 0;
+        line-height: 350px;
+        text-align: center;
+    }
+    #results {
+        // TODO
+    }
+    #charts {
+        // TODO
+    }
+}
