@@ -1,19 +1,10 @@
 <div id="left-side">
   <header>{{ title }}?</header>
-  <form id="person-form">
-    <input type="text" placeholder="Who?" required>
-    <input type="number" placeholder="Salary per month (after tax)" required>
-    <input type="submit" value="Add">
-  </form>
-  <form id="expense-form">
-    <input type="text" placeholder="Expense name" required>
-    <input type="number" placeholder="How much?" required>
-    <input type="submit" value="Add">
-  </form>
+  <app-persons></app-persons>
+  <app-expenses></app-expenses>
   <footer>made by <a href="https://github.com/palprz">palprz</a></footer>
 </div>
 <div id="right-side">
- <div id="results">placeholder results</div>
- <div id="charts">placeholder charts</div>
+  <app-results></app-results>
 </div>
 <router-outlet></router-outlet>

@@ -1,0 +1,14 @@
+<div>Add person</div>
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="name">
+            Name
+        </label>
+        <input id="name" type="text" formControlName="name">
+    </div>
+    <div>
+        <label for="salary">Salary (per month)</label>
+        <input id="salary" type="text" formControlName="salary">
+    </div>
+    <button class="button" type="submit">Send</button>
+</form>
