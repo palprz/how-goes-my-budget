@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Expense } from '../models/expense';
 
 @Component({
   selector: 'app-expense-form',
@@ -7,6 +8,8 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./expense-form.component.scss']
 })
 export class ExpenseFormComponent {
+
+  @Output() newExpense = new EventEmitter<Expense>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -18,7 +21,9 @@ export class ExpenseFormComponent {
   });
 
   onSubmit(): void {
-    console.log('Adding expense:', this.checkoutForm.value);
+    const value = this.checkoutForm.value;
+    const expense = new Expense(value.name, value.cost);
+    this.newExpense.emit(expense);
     this.checkoutForm.reset();
   }
 }

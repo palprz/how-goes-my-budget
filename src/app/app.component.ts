@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Expense } from './models/expense';
+import { Person } from './models/person';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'how-goes-my-budget';
+
+  newPerson!: Person;
+  newExpense!: Expense;
+
+  constructor() { }
+
+  receiveNewPerson(person: Person) {
+    this.newPerson = person;
+  }
+
+  receiveNewExpense(expense: Expense) {
+    this.newExpense = expense;
+  }
 }

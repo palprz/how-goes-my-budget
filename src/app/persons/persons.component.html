@@ -1,5 +1,5 @@
-<app-person-form></app-person-form>
-<div>
-    <div>Persons:</div>
-    <div>placeholder</div>
-</div>
+<app-person-form (newPerson)="receiveNewPerson($event)"></app-person-form>
+<div *ngIf="persons?.length" class="title">Persons:</div>
+<ul *ngFor='let person of persons'>
+    <li>{{ person.name }} with {{ person.salary }} salary</li>
+</ul>

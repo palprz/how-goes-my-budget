@@ -1,10 +1,11 @@
 <div id="left-side">
-  <header>{{ title }}?</header>
-  <app-persons></app-persons>
-  <app-expenses></app-expenses>
+  <header>How goes my budget?</header>
+  <app-persons (newPerson)="receiveNewPerson($event)"></app-persons>
+  <app-expenses (newExpense)="receiveNewExpense($event)"></app-expenses>
   <footer>made by <a href="https://github.com/palprz">palprz</a></footer>
 </div>
 <div id="right-side">
-  <app-results></app-results>
+  <!-- TODO do better this sending details -->
+  <app-results [person]="newPerson" [expense]="newExpense"></app-results>
 </div>
 <router-outlet></router-outlet>
