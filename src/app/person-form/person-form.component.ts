@@ -7,10 +7,9 @@ import { v4 as uuidv4 } from 'uuid';
 @Component({
   selector: 'app-person-form',
   templateUrl: './person-form.component.html',
-  styleUrls: ['./person-form.component.scss']
+  styleUrls: ['./person-form.component.scss'],
 })
 export class PersonFormComponent {
-
   constructor(
     private formBuilder: FormBuilder,
     private dataService: DataService
@@ -18,7 +17,7 @@ export class PersonFormComponent {
 
   checkoutForm = this.formBuilder.group({
     name: '',
-    salary: ''
+    salary: '',
   });
 
   onSubmit(): void {

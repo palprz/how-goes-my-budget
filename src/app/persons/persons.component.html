@@ -1,14 +1,14 @@
 <app-person-form></app-person-form>
 <div *ngIf="persons?.length" class="title">Persons:</div>
-<table *ngIf='persons?.length'>
-    <tr>
-        <th>Name</th>
-        <th>Salary</th>
-        <th>Delete</th>
-    </tr>
-    <tr *ngFor='let person of persons'>
-        <td>{{ person.name }}</td>
-        <td>{{ person.salary }}</td>
-        <td><button (click)="deletePerson(person)">delete</button></td>
-    </tr>
+<table *ngIf="persons?.length">
+  <tr>
+    <th>Name</th>
+    <th>Salary</th>
+    <th>Delete</th>
+  </tr>
+  <tr *ngFor="let person of persons">
+    <td>{{ person.name }}</td>
+    <td>{{ person.salary }}</td>
+    <td><button (click)="deletePerson(person)">delete</button></td>
+  </tr>
 </table>

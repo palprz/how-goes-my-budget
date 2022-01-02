@@ -17,15 +17,10 @@ import { ResultsComponent } from './results/results.component';
     PersonFormComponent,
     ExpensesComponent,
     ExpenseFormComponent,
-    ResultsComponent
+    ResultsComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

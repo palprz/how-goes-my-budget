@@ -1,19 +1,19 @@
 <!-- FIXME remove it later - this is just to show that we get something-->
 <button (click)="recalculate()">Recalculate</button>
 
-<table  *ngIf="results?.length">
-    <th>Name</th>
-    <th>All expenses</th>
-    <th>Common (across all persons)</th>
-    <th>Individual (only for this person)</th>
-    <th>Summary (salary minus expenses)</th>
-    <tr *ngFor='let result of results'>
-        <td>{{ result.personName }}</td>
-        <td>{{ result.allExpense }}</td>
-        <td>{{ result.commonExpense }}</td>
-        <td>{{ result.individualExpense }}</td>
-        <td>{{ result.summary }}</td>
-    </tr>
+<table *ngIf="results?.length">
+  <th>Name</th>
+  <th>All expenses</th>
+  <th>Common (across all persons)</th>
+  <th>Individual (only for this person)</th>
+  <th>Summary (salary minus expenses)</th>
+  <tr *ngFor="let result of results">
+    <td>{{ result.personName }}</td>
+    <td>{{ result.allExpense }}</td>
+    <td>{{ result.commonExpense }}</td>
+    <td>{{ result.individualExpense }}</td>
+    <td>{{ result.summary }}</td>
+  </tr>
 </table>
 
 <div id="charts">placeholder charts</div>

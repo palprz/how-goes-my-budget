@@ -7,10 +7,9 @@ import { v4 as uuidv4 } from 'uuid';
 @Component({
   selector: 'app-expenses',
   templateUrl: './expenses.component.html',
-  styleUrls: ['./expenses.component.scss']
+  styleUrls: ['./expenses.component.scss'],
 })
 export class ExpensesComponent {
-
   expenses: Expense[] = [];
   persons: Person[] = [];
 
@@ -38,7 +37,7 @@ export class ExpensesComponent {
       }
     }
   }
-  
+
   generateTestData() {
     const person1 = new Person(uuidv4(), 'Adam', 2800);
     const person2 = new Person(uuidv4(), 'Sarah', 1600);
@@ -62,5 +61,4 @@ export class ExpensesComponent {
     this.expenses.push(expense6);
     this.expenses.push(expense7);
   }
-
 }

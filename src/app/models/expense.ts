@@ -1,22 +1,22 @@
-import { Person } from "./person";
+import { Person } from './person';
 
 export class Expense {
-    name: string;
-    cost: number;
-    forWhom: Person[] = [];
+  name: string;
+  cost: number;
+  forWhom: Person[] = [];
 
-    constructor(name: string, cost: number) {
-        {
-            this.name = name;
-            this.cost = cost;
-        }
+  constructor(name: string, cost: number) {
+    {
+      this.name = name;
+      this.cost = cost;
     }
+  }
 
-    addPersonToExpense(person: Person) {
-        this.forWhom.push(person);
-    }
+  addPersonToExpense(person: Person) {
+    this.forWhom.push(person);
+  }
 
-    removePersonFromExpense() {
-        // TODO
-    }
+  removePersonFromExpense() {
+    // TODO
+  }
 }

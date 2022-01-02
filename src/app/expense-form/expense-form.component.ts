@@ -6,10 +6,9 @@ import { Expense } from '../models/expense';
 @Component({
   selector: 'app-expense-form',
   templateUrl: './expense-form.component.html',
-  styleUrls: ['./expense-form.component.scss']
+  styleUrls: ['./expense-form.component.scss'],
 })
 export class ExpenseFormComponent {
-
   constructor(
     private formBuilder: FormBuilder,
     private dataService: DataService
@@ -17,7 +16,7 @@ export class ExpenseFormComponent {
 
   checkoutForm = this.formBuilder.group({
     name: '',
-    cost: ''
+    cost: '',
   });
 
   onSubmit(): void {

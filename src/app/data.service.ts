@@ -3,11 +3,10 @@ import { Expense } from './models/expense';
 import { Person } from './models/person';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
-
-  constructor() { }
+  constructor() {}
 
   persons: Person[] = [];
   expenses: Expense[] = [];
@@ -27,5 +26,4 @@ export class DataService {
   getExpenses() {
     return this.expenses;
   }
-
 }
