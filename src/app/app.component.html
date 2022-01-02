@@ -1,11 +1,10 @@
 <div id="left-side">
   <header>How goes my budget?</header>
-  <app-persons (newPerson)="receiveNewPerson($event)"></app-persons>
-  <app-expenses (newExpense)="receiveNewExpense($event)"></app-expenses>
+  <app-persons></app-persons>
+  <app-expenses></app-expenses>
   <footer>made by <a href="https://github.com/palprz">palprz</a></footer>
 </div>
 <div id="right-side">
-  <!-- TODO do better this sending details -->
-  <app-results [person]="newPerson" [expense]="newExpense"></app-results>
+  <app-results></app-results>
 </div>
 <router-outlet></router-outlet>

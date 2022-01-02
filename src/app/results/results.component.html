@@ -1,2 +1,10 @@
-<div *ngIf="person" id="calculations">placeholder calculations {{ person.salary }}</div>
-<div *ngIf="expense" id="charts">placeholder charts {{ expense.cost }}</div>
+<!-- FIXME remove it later - this is just to show that we get something-->
+
+<ul *ngFor='let person of persons'>
+    <li>{{ person.name }} with {{ person.salary }} salary</li>
+</ul>
+<ul *ngFor='let expense of expenses'>
+    <li>{{ expense.name }} with {{ expense.cost }} cost</li>
+</ul>
+<div id="calculations">placeholder calculations</div>
+<div id="charts">placeholder charts</div>

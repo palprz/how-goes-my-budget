@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
+import { DataService } from '../data.service';
 import { Expense } from '../models/expense';
 import { Person } from '../models/person';
 
@@ -9,13 +10,12 @@ import { Person } from '../models/person';
 })
 export class ResultsComponent {
 
-  @Input() person!: Person;
-  @Input() expense!: Expense;
+  persons: Person[] = [];
+  expenses: Expense[] = [];
 
-  constructor() { }
-
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   throw new Error('Method not implemented.');
-  // }
+  constructor(dataService: DataService) {
+    this.persons = dataService.getPersons();
+    this.expenses = dataService.getExpenses();
+  }
 
 }

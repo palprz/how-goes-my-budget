@@ -1,4 +1,4 @@
-<app-person-form (newPerson)="receiveNewPerson($event)"></app-person-form>
+<app-person-form></app-person-form>
 <div *ngIf="persons?.length" class="title">Persons:</div>
 <ul *ngFor='let person of persons'>
     <li>{{ person.name }} with {{ person.salary }} salary</li>

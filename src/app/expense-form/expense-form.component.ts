@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { DataService } from '../data.service';
 import { Expense } from '../models/expense';
 
 @Component({
@@ -9,10 +10,9 @@ import { Expense } from '../models/expense';
 })
 export class ExpenseFormComponent {
 
-  @Output() newExpense = new EventEmitter<Expense>();
-
   constructor(
     private formBuilder: FormBuilder,
+    private dataService: DataService
   ) {}
 
   checkoutForm = this.formBuilder.group({
@@ -23,7 +23,7 @@ export class ExpenseFormComponent {
   onSubmit(): void {
     const value = this.checkoutForm.value;
     const expense = new Expense(value.name, value.cost);
-    this.newExpense.emit(expense);
+    this.dataService.addExpense(expense);
     this.checkoutForm.reset();
   }
 }

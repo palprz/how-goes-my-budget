@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { DataService } from '../data.service';
 import { Expense } from '../models/expense';
 
 @Component({
@@ -8,14 +9,10 @@ import { Expense } from '../models/expense';
 })
 export class ExpensesComponent {
 
-  @Output() newExpense = new EventEmitter<Expense>();
-
-  constructor() { }
-
   expenses: Expense[] = [];
 
-  receiveNewExpense(expense: Expense) {
-    this.expenses.push(expense);
-    this.newExpense.emit(expense);
+  constructor(private dataService: DataService) {
+    this.expenses = dataService.getExpenses();
   }
+  
 }

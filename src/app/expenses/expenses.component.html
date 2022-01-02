@@ -1,4 +1,4 @@
-<app-expense-form (newExpense)="receiveNewExpense($event)"></app-expense-form>
+<app-expense-form></app-expense-form>
 <div *ngIf="expenses?.length"class="title">Expenses:</div>
 <ul *ngFor='let expense of expenses'>
     <li>{{ expense.name }} with {{ expense.cost }} cost</li>
