@@ -3,16 +3,16 @@ export class Result {
     personName: string;
     allExpense: number;
     commonExpense: number;
-    separateExpense: number;
+    individualExpense: number;
     summary: number;
 
-    constructor(personID: string, personName: string, allExpense: number, commonExpense: number, separateExpense: number, summary: number) {
+    constructor(personID: string, personName: string, allExpense: number, commonExpense: number, individualExpense: number, summary: number) {
         {
             this.personID = personID;
             this.personName = personName;
             this.allExpense = allExpense;
             this.commonExpense = commonExpense;
-            this.separateExpense = separateExpense;
+            this.individualExpense = individualExpense;
             this.summary = summary;
         }
     }
