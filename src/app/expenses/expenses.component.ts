@@ -19,6 +19,13 @@ export class ExpensesComponent {
     this.persons = dataService.getPersons();
   }
 
+  deleteExpense(expense: Expense) {
+    const index = this.expenses.indexOf(expense, 0);
+    if (index > -1) {
+      this.expenses.splice(index, 1);
+    }
+  }
+
   assignPerson(expense: Expense, person: Person, event: any) {
     if (event.currentTarget.checked) {
       // add person

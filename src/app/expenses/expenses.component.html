@@ -5,11 +5,13 @@
         <th>Name</th>
         <th>Cost</th>
         <th *ngFor='let person of persons'>{{ person.name }}</th>
+        <th>Delete</th>
     </tr>
     <tr *ngFor='let expense of expenses'>
         <td>{{ expense.name }}</td>
         <td>{{ expense.cost }}</td>
         <td *ngFor='let person of persons'><input (change)="assignPerson(expense, person, $event)" type="checkbox"/></td>
+        <td><button (click)="deleteExpense(expense)">delete</button></td>
     </tr>
 </table>
 <button style="background-color: rgb(247, 184, 253);" (click)='generateTestData()'>Generate test data</button>

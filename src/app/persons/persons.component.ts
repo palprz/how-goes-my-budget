@@ -15,4 +15,11 @@ export class PersonsComponent {
     this.persons = dataService.getPersons();
   }
   
+  deletePerson(person: Person) {
+    const index = this.persons.indexOf(person, 0);
+    if (index > -1) {
+      this.persons.splice(index, 1);
+    }
+  }
+
 }
