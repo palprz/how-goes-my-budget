@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DataService } from '../data.service';
 import { Expense } from '../models/expense';
 import { Person } from '../models/person';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-expenses',
@@ -17,10 +18,23 @@ export class ExpensesComponent {
     this.expenses = dataService.getExpenses();
     this.persons = dataService.getPersons();
   }
+
+  assignPerson(expense: Expense, person: Person, event: any) {
+    if (event.currentTarget.checked) {
+      // add person
+      expense.forWhom.push(person);
+    } else {
+      // remove person
+      const index = expense.forWhom.indexOf(person, 0);
+      if (index > -1) {
+        expense.forWhom.splice(index, 1);
+      }
+    }
+  }
   
   generateTestData() {
-    const person1 = new Person('Adam', 2200);
-    const person2 = new Person('Sarah', 2500);
+    const person1 = new Person(uuidv4(), 'Adam', 2200);
+    const person2 = new Person(uuidv4(), 'Sarah', 2500);
 
     this.persons.push(person1);
     this.persons.push(person2);

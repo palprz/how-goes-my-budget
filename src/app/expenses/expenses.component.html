@@ -9,6 +9,7 @@
     <tr *ngFor='let expense of expenses'>
         <td>{{ expense.name }}</td>
         <td>{{ expense.cost }}</td>
+        <td *ngFor='let person of persons'><input (change)="assignPerson(expense, person, $event)" type="checkbox"/></td>
     </tr>
 </table>
 <button style="background-color: rgb(247, 184, 253);" (click)='generateTestData()'>Generate test data</button>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { DataService } from '../data.service';
 import { Person } from '../models/person';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-person-form',
@@ -22,7 +23,7 @@ export class PersonFormComponent {
 
   onSubmit(): void {
     const value = this.checkoutForm.value;
-    const person = new Person(value.name, value.salary);
+    const person = new Person(uuidv4(), value.name, value.salary);
     this.dataService.addPerson(person);
     this.checkoutForm.reset();
   }
