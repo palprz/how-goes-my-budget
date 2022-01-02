@@ -32,22 +32,23 @@ export class ResultsComponent {
       let individual = 0;
       // check each expense for this person
       this.expenses.forEach( expense => {
+        let expenseCostPerPerson = Math.round(expense.cost / expense.forWhom.length);
+
         // is expense assigned to this person?
         if (expense.forWhom.find(e => e.id === person.id)) {
-          all = all + expense.cost;
+          all = all + expenseCostPerPerson;
           if (expense.forWhom.length === 1) {
             // if it's only one person assigned then it's an individual
-            individual = individual + expense.cost;
+            individual = individual + expenseCostPerPerson;
           }
         }
 
         // same number of assigned persons as all persons == common expense
         if (expense.forWhom.length === this.persons.length) {
-          common = common + expense.cost;
+          common = common + expenseCostPerPerson;
         }
       });
 
-      // TODO properly split that data (all and common)
       const result = new Result(person.id, person.name, all, common, individual, person.salary - all);
       this.results.push(result);
     });
