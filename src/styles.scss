@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+form {
+  float: left;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid;
+  input {
+    margin: 5px 0 10px 0;
+  }
+  label,
+  button,
+  input,
+  h4 {
+    clear: left;
+    float: left;
+  }
+}
+
+table {
+    clear: left;
+    float: left;
+    padding: 10px;
+    border: 1px solid black;
+    td {
+      padding: 5px 10px;
+    }
+    tr:nth-child(even) {
+      background-color: #eee;
+    }
+    tr:hover {
+      background-color: #ace5ee;
+    }
+  }
+  
+  button:hover,
+  input:hover {
+    cursor: pointer;
+  }
+  

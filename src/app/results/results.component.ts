@@ -13,6 +13,7 @@ export class ResultsComponent {
   persons: Person[] = [];
   expenses: Expense[] = [];
   results: Result[] = [];
+  dataSource!: Object;
 
   constructor(dataService: DataService) {
     this.persons = dataService.getPersons();
@@ -63,5 +64,22 @@ export class ResultsComponent {
       );
       this.results.push(result);
     });
+
+    // TODO generate more charts + move it to be separate function
+    let datas: { label: string; value: number; }[] = [];
+    this.results.forEach(result => {
+      datas.push({ label: result.personName, value: result.allExpense});
+    });
+    // data for charts
+    this.dataSource = {
+      chart: {
+        caption: 'Cost per person',
+        xAxisName: 'Person name',
+        yAxisName: 'Cost',
+        theme: 'fusion'
+      },
+      data: datas
+    };
+
   }
 }
