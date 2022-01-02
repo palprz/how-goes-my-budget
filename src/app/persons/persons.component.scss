@@ -1,8 +1,15 @@
-ul {
+table {
   clear: left;
-}
-
-.title {
-  clear: left;
-  margin-top: 20px;
+  float: left;
+  padding: 10px;
+  border: 1px solid black;
+  td {
+    padding: 5px 10px;
+  }
+  tr:nth-child(even) {
+    background-color: #EEE;
+  }
+  tr:hover {
+    background-color: #ACE5EE;
+  }
 }

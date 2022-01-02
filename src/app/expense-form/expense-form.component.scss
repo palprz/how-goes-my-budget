@@ -1,8 +1,10 @@
 form {
-  margin: 10px 0;
-  height: 100px;
+  float: left;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid;
   input {
-    margin: 10px;
+    margin: 5px 0 10px 0;
   }
   label,
   button,

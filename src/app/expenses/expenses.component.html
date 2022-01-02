@@ -1,5 +1,9 @@
-<app-expense-form></app-expense-form>
-<div *ngIf="expenses?.length" class="title">Expenses:</div>
+<button
+  style="background-color: rgb(247, 184, 253)"
+  (click)="generateTestData()"
+>
+  Generate test data
+</button>
 <table *ngIf="expenses?.length">
   <tr>
     <th>Name</th>
@@ -16,9 +20,3 @@
     <td><button (click)="deleteExpense(expense)">delete</button></td>
   </tr>
 </table>
-<button
-  style="background-color: rgb(247, 184, 253)"
-  (click)="generateTestData()"
->
-  Generate test data
-</button>
