@@ -13,7 +13,9 @@ export class ResultsComponent {
   persons: Person[] = [];
   expenses: Expense[] = [];
   results: Result[] = [];
-  dataSource!: Object;
+
+  summaryChart!: Object;
+  breakDownExpensesChart!: Object;
 
   constructor(dataService: DataService) {
     this.persons = dataService.getPersons();
@@ -30,9 +32,10 @@ export class ResultsComponent {
 
     // each row with result == 1 person
     this.persons.forEach((person) => {
-      let all = 0;
+      let total = 0;
       let common = 0;
       let individual = 0;
+      let expenseMap = new Map<string, number>();
       // check each expense for this person
       this.expenses.forEach((expense) => {
         let expenseCostPerPerson = Math.round(
@@ -41,45 +44,81 @@ export class ResultsComponent {
 
         // is expense assigned to this person?
         if (expense.forWhom.find((e) => e.id === person.id)) {
-          all = all + expenseCostPerPerson;
+          expenseMap.set(expense.name, expenseCostPerPerson);
+          total = total + expenseCostPerPerson;
           if (expense.forWhom.length === 1) {
             // if it's only one person assigned then it's an individual
             individual = individual + expenseCostPerPerson;
+          } else if (expense.forWhom.length === this.persons.length) {
+            // same number of assigned persons as all persons == common expense
+            common = common + expenseCostPerPerson;
           }
-        }
-
-        // same number of assigned persons as all persons == common expense
-        if (expense.forWhom.length === this.persons.length) {
-          common = common + expenseCostPerPerson;
+        } else {
+          expenseMap.set(expense.name, 0);
         }
       });
 
       const result = new Result(
         person.id,
         person.name,
-        all,
+        total,
         common,
         individual,
-        person.salary - all
+        person.salary - total,
+        expenseMap
       );
       this.results.push(result);
     });
 
-    // TODO generate more charts + move it to be separate function
-    let datas: { label: string; value: number; }[] = [];
-    this.results.forEach(result => {
-      datas.push({ label: result.personName, value: result.allExpense});
+    this.defineSummaryChart();
+    this.defineBreakDownExpensesChart();
+  }
+
+  defineSummaryChart() {
+    let data: any[] = [];
+    this.results.forEach((result) => {
+      data.push({ label: result.personName, value: result.totalExpense });
     });
-    // data for charts
-    this.dataSource = {
+
+    this.summaryChart = {
       chart: {
-        caption: 'Cost per person',
+        caption: 'Total expense per person',
         xAxisName: 'Person name',
         yAxisName: 'Cost',
-        theme: 'fusion'
+        theme: 'fusion',
       },
-      data: datas
+      data: data,
     };
+  }
 
+  defineBreakDownExpensesChart() {
+    // find expense names
+    let expenseNamesList: any[] = [];
+    this.expenses.forEach((expense) => {
+      expenseNamesList.push({ label: expense.name });
+    });
+
+    // find data for person and per all expenses related to that person
+    let dataSet: any[] = [];
+    this.results.forEach((result) => {
+      let data: any[] = [];
+      result.expenseMap.forEach((value: number) => {
+        data.push({ value: value });
+      });
+      dataSet.push({ seriesname: result.personName, data: data });
+    });
+
+    this.breakDownExpensesChart = {
+      chart: {
+        caption: 'Split expenses',
+        theme: 'fusion',
+      },
+      categories: [
+        {
+          category: expenseNamesList,
+        },
+      ],
+      dataset: dataSet,
+    };
   }
 }

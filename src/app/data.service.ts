@@ -25,6 +25,7 @@ export class DataService {
 
   addPerson(newPerson: Person) {
     this.persons.push(newPerson);
+    this.persons.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   getPersons() {
@@ -33,6 +34,7 @@ export class DataService {
 
   addExpense(newExpense: Expense) {
     this.expenses.push(newExpense);
+    this.expenses.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   getExpenses() {

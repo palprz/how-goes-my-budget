@@ -1,12 +1,12 @@
 <table *ngIf="results?.length">
   <th>Name</th>
-  <th>All expenses</th>
+  <th>Total expenses</th>
   <th>Common (across all persons)</th>
   <th>Individual (only for this person)</th>
   <th>Summary (salary minus expenses)</th>
   <tr *ngFor="let result of results">
     <td>{{ result.personName }}</td>
-    <td>{{ result.allExpense }}</td>
+    <td>{{ result.totalExpense }}</td>
     <td>{{ result.commonExpense }}</td>
     <td>{{ result.individualExpense }}</td>
     <td>{{ result.summary }}</td>
@@ -14,9 +14,20 @@
 </table>
 
 <fusioncharts
-    width="400"
-    height="400"
-    type="Column2D"
-    dataFormat="JSON"
-    [dataSource]="dataSource"
+  *ngIf="results?.length"
+  width="400"
+  height="400"
+  type="Column2D"
+  dataFormat="JSON"
+  [dataSource]="summaryChart"
 ></fusioncharts>
+
+<fusioncharts
+  *ngIf="results?.length"
+  width="600"
+  height="400"
+  type="stackedbar2d"
+  dataFormat="JSON"
+  [dataSource]="breakDownExpensesChart"
+>
+</fusioncharts>

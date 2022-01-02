@@ -1,10 +1,7 @@
-<button
-  style="background-color: rgb(247, 184, 253)"
-  (click)="generateTestData()"
->
-  Generate test data
-</button>
 <table *ngIf="expenses?.length">
+  <caption>
+    List with expenses
+  </caption>
   <tr>
     <th>Name</th>
     <th>Cost</th>

@@ -1,11 +1,16 @@
 <div id="left-side">
-  <header>How goes my budget?</header>
+  <header>
+    <h1>How goes my budget?</h1>
+    <p>made by <a href="https://github.com/palprz">palprz</a></p>
+  </header>
   <app-person-form></app-person-form>
   <app-expense-form></app-expense-form>
   <app-persons></app-persons>
   <app-expenses></app-expenses>
-  <button (click)="calculation()">Calculation</button>
-  <footer>made by <a href="https://github.com/palprz">palprz</a></footer>
+  <button class="calculation-btn" (click)="calculation()">Calculation</button>
+  <button class="generate-test-data-btn" (click)="generateTestData()">
+    Generate test data
+  </button>
 </div>
 <div id="right-side">
   <app-results></app-results>

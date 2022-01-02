@@ -1,9 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
 form {
-  float: left;
+  margin: 20px 2px;
   padding: 10px;
-  margin: 10px;
-  border: 1px solid;
+  border: 1px solid #888;
   input {
     margin: 5px 0 10px 0;
   }
@@ -14,26 +21,30 @@ form {
     clear: left;
     float: left;
   }
+  h4 {
+    padding: 0 0 5px 0;
+    margin: 0;
+  }
 }
 
 table {
-    clear: left;
-    float: left;
-    padding: 10px;
-    border: 1px solid black;
-    td {
-      padding: 5px 10px;
-    }
-    tr:nth-child(even) {
-      background-color: #eee;
-    }
-    tr:hover {
-      background-color: #ace5ee;
-    }
+  clear: left;
+  float: left;
+  padding: 10px;
+  width: 100%;
+  margin-top: 20px;
+  td {
+    padding: 5px 10px;
   }
-  
-  button:hover,
-  input:hover {
-    cursor: pointer;
+  tr:nth-child(even) {
+    background-color: #eee;
   }
-  
+  tr:hover {
+    background-color: #ace5ee;
+  }
+}
+
+button:hover,
+input:hover {
+  cursor: pointer;
+}
