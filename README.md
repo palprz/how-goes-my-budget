@@ -23,5 +23,4 @@ Before following the steps below, make sure you have installed Angular on your l
 5. Open browser with `localhost:4200` URL
 
 ## Screens from running application
-![alt text][homepage_img]
-[homepage_img]: https://github.com/palprz/how-goes-my-budget/blob/master/demo.png
+![Demo page with some test data](https://github.com/palprz/how-goes-my-budget/blob/master/demo.png)
