@@ -7,9 +7,14 @@ table {
     padding: 5px 10px;
   }
   tr:nth-child(even) {
-    background-color: #EEE;
+    background-color: #eee;
   }
   tr:hover {
-    background-color: #ACE5EE;
+    background-color: #ace5ee;
   }
+}
+
+button:hover,
+input:hover {
+  cursor: pointer;
 }

@@ -17,9 +17,13 @@ export class ResultsComponent {
   constructor(dataService: DataService) {
     this.persons = dataService.getPersons();
     this.expenses = dataService.getExpenses();
+    // check if calculation button has been clicked
+    dataService.getCalculationEvent().subscribe(() => {
+      this.calculation();
+    });
   }
 
-  recalculate(): void {
+  calculation(): void {
     // clear results
     this.results = [];
 

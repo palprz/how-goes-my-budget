@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { Expense } from './models/expense';
 import { Person } from './models/person';
 
@@ -6,10 +7,21 @@ import { Person } from './models/person';
   providedIn: 'root',
 })
 export class DataService {
+
   constructor() {}
 
   persons: Person[] = [];
   expenses: Expense[] = [];
+
+  private subject = new Subject<any>();
+  
+  sendRequestToCalculate() {
+    this.subject.next('');
+  }
+
+  getCalculationEvent(): Observable<any>{ 
+    return this.subject.asObservable();
+  }
 
   addPerson(newPerson: Person) {
     this.persons.push(newPerson);
