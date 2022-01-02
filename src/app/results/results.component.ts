@@ -13,6 +13,7 @@ export class ResultsComponent {
   persons: Person[] = [];
   expenses: Expense[] = [];
   results: Result[] = [];
+  errorMsg: string = '';
 
   summaryChart!: Object;
   breakDownExpensesChart!: Object;
@@ -29,6 +30,10 @@ export class ResultsComponent {
   calculation(): void {
     // clear results
     this.results = [];
+
+    if (!this.validation()) {
+      return;
+    }
 
     // each row with result == 1 person
     this.persons.forEach((person) => {
@@ -120,5 +125,31 @@ export class ResultsComponent {
       ],
       dataset: dataSet,
     };
+  }
+
+  validation(): boolean {
+    this.errorMsg = '';
+    // do we have even a single expense to calculate?
+    const hasExpenses = this.expenses.length > 0;
+    if (!hasExpenses) {
+      this.errorMsg = 'Add some expenses to be able to calculate anything';
+      return false;
+    }
+
+    // has anyone veen assigned to the expense(s)?
+    let isAssignedAnyone = false;
+    this.expenses.forEach((expense) => {
+      if (expense.forWhom.length > 0) {
+        isAssignedAnyone = true;
+      }
+    });
+
+    if (!isAssignedAnyone) {
+      this.errorMsg =
+        'No one has been assigned to expense - nothing to calculate';
+      return false;
+    }
+
+    return true;
   }
 }

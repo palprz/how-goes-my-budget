@@ -3,26 +3,25 @@
 Web application for creating simple plan of budget and display charts with splitted expenses.
 
 ## Technologies
-1. Frontend
-  - Angular ver. 13
-  - FusionCharts ver. 3.18.0
+  - Angular (version 13)
+  - FusionCharts
   - SCSS
   - HTML5
 
 ## Functionalities
 User can:
-- add person (name and salary)
-- add expense (name and cost)
-- display table with persons, expenses and summary of expenses
-- check the checkbox in expenses table for person
-- show 2 charts with different displayed data
+- add persons and expenses
+- display tables with added persons, expenses and summary of calculated expenses
+- show 2 charts with displayed different data
 
-## Steps for run the application:
-1. Make sure you have installed Angular.
-2. Download project 
-3. Go with using terminal to the root of the project (`/how-goes-my-budget/`)
-4. Run locally project by using: `ng serve` command in terminal
+## How to run application locally
+Before following the steps below, make sure you have installed Angular on your local machine.
+
+1. Download project 
+2. With using terminal go to the root of the project (`/how-goes-my-budget`)
+3. In terminal use command `ng serve` to start app
 5. Open browser with `localhost:4200` URL
 
 ## Screens from running application
-TODO push it to heroku to see the live demo
+![alt text][homepage_img]
+[homepage_img]: https://github.com/palprz/how-goes-my-budget/blob/master/demo.png

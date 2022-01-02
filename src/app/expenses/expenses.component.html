@@ -14,6 +14,6 @@
     <td *ngFor="let person of persons">
       <input (change)="assignPerson(expense, person, $event)" type="checkbox" />
     </td>
-    <td><button (click)="deleteExpense(expense)">delete</button></td>
+    <td><button (click)="deleteExpense(expense)">x</button></td>
   </tr>
 </table>
