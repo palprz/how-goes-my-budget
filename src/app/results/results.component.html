@@ -1,8 +1,11 @@
 <!-- FIXME remove it later - this is just to show that we get something-->
 
+<button (click)="recalculate()">Recalculate</button>
+
 <ul *ngFor='let person of persons'>
-    <li>{{ person.name }} with {{ person.salary }} salary</li>
+    <li>{{ person.name }} got {{ person.salary }} salary</li>
 </ul>
+
 <ul *ngFor='let expense of expenses'>
     <li>{{ expense.name }} with {{ expense.cost }} cost</li>
 </ul>

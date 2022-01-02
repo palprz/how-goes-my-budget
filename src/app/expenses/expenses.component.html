@@ -1,5 +1,13 @@
 <app-expense-form></app-expense-form>
 <div *ngIf="expenses?.length"class="title">Expenses:</div>
-<ul *ngFor='let expense of expenses'>
-    <li>{{ expense.name }} with {{ expense.cost }} cost</li>
-</ul>
+<table *ngIf='expenses?.length'>
+    <tr>
+        <th>Name</th>
+        <th>Cost</th>
+        <th *ngFor='let person of persons'>{{ person.name }}</th>
+    </tr>
+    <tr *ngFor='let expense of expenses'>
+        <td>{{ expense.name }}</td>
+        <td>{{ expense.cost }}</td>
+    </tr>
+</table>

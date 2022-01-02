@@ -18,4 +18,8 @@ export class ResultsComponent {
     this.expenses = dataService.getExpenses();
   }
 
+  recalculate(): void {
+    // TODO
+  }
+
 }

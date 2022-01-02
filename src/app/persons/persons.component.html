@@ -1,5 +1,12 @@
 <app-person-form></app-person-form>
 <div *ngIf="persons?.length" class="title">Persons:</div>
-<ul *ngFor='let person of persons'>
-    <li>{{ person.name }} with {{ person.salary }} salary</li>
-</ul>
+<table *ngIf='persons?.length'>
+    <tr>
+        <th>Name</th>
+        <th>Salary</th>
+    </tr>
+    <tr *ngFor='let person of persons'>
+        <td>{{ person.name }}</td>
+        <td>{{ person.salary }}</td>
+    </tr>
+</table>
