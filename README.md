@@ -19,7 +19,8 @@ Before following the steps below, make sure you have installed Angular on your l
 
 1. Download project 
 2. With using terminal go to the root of the project (`/how-goes-my-budget`)
-3. In terminal use command `ng serve` to start app
+3. Run `npm install` to install dependencies
+4. In terminal use command `ng serve` to start app
 5. Open browser with `localhost:4200` URL
 
 ## Screens from running application
