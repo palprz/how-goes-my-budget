@@ -2,6 +2,14 @@
 
 Web application for creating simple plan of budget and display charts with splitted expenses.
 
+## Screen from running application
+![Demo page with some test data](https://github.com/palprz/how-goes-my-budget/blob/master/demo.png)
+
+## Link to demo of application
+Can take 30 seconds to run application on Heroku (sorry, free version got some disadvantage!):
+
+https://how-goes-my-budget.herokuapp.com/
+
 ## Technologies
   - Angular (version 13)
   - FusionCharts
@@ -22,6 +30,3 @@ Before following the steps below, make sure you have installed Angular on your l
 3. Run `npm install` to install dependencies
 4. In terminal use command `ng serve` to start app
 5. Open browser with `localhost:4200` URL
-
-## Screens from running application
-![Demo page with some test data](https://github.com/palprz/how-goes-my-budget/blob/master/demo.png)
