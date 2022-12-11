@@ -1,14 +1,9 @@
-# How goes my budget [March 2016 - refreshed in January 2022]
+# How goes my budget
 
 Web application for creating simple plan of budget and display charts with splitted expenses.
 
 ## Screen from running application
 ![Demo page with some test data](https://github.com/palprz/how-goes-my-budget/blob/master/demo.png)
-
-## Link to demo of application
-Can take 30 seconds to run application on Heroku (sorry, free version got some disadvantage!):
-
-https://how-goes-my-budget.herokuapp.com/
 
 ## Technologies
   - Angular (version 13)
